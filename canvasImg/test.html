@@ -1,0 +1,44 @@
+
+<doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <style>
+    canvas {
+      display: block;
+      border: 1px solid #eee;
+      margin: 10px auto;
+    }
+    .button-group {
+      margin: 10px auto;
+      width: 800px;
+      text-align: center;
+    }
+    .button-group a {
+      display: inline-block;
+      width: 80px;
+      height: 32px;
+      line-height: 32px;
+      text-decoration: none;
+      border: 1px solid #fff;
+    }
+    .button-group a:hover {
+      cursor: pointer;
+      color: #1DA57A;
+    }
+ </style>
+ <title>canvas图片旋转缩放拖拽</title>
+ </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <div class="button-group">
+      <a id="resetBtn">点击还原</a>
+      <a id="bigBtn">点击放大</a>
+      <a id="smallBtn">点击缩小</a>
+      <a id="leftRotate">点击左旋</a>
+      <a id="rightRotate">点击右旋</a>
+    </div>
+   <script type="text/javascript" src="test.js"></script>
+  </body>
+</html>

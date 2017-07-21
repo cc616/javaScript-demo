@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>使用css3图片旋转拖拽缩放</title>
+      <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        #imgContainer {
+          overflow: hidden;
+          border: 1px solid red;
+          margin: auto;
+        }
+        .img {
+          border: 1px solid #cecece;
+          cursor: move;
+          position: relative;
+        }
+        .operator-group {
+          height: 50px;
+          text-align: center;
+          margin-top: 20px;
+        }
+        .button:focus {
+          outline: 0;
+        }
+        .button {
+          padding: 0;
+          width: 50px;
+          line-height: 40px;
+          background: linear-gradient(to top,#444,#343434 50%,#292929 0,#333);
+          border: 1px solid #111;
+          color: #fff;
+          border: 1px solid #111;
+          border-right: none;
+        }
+        .button:hover {
+          cursor: pointer;
+        }
+        .hide {
+          display: none;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="imgContainer">
+       <img id="img" src="http://scc-1252933003.cosgz.myqcloud.com/1500453562842780.jpg" class="img" />
+    </div>
+    <div class="operator-group">
+      <button class="button" id="leftBtn">向左转</button>
+      <button class="button" id="rightBtn">向右转</button>
+      <button class="button" id="bigBtn">放大</button>
+      <button class="button" id="smallBtn">缩小</button>
+      <button class="button" id="resetBtn">还原</button>
+    </div>
+    <script type="text/javascript">
+
+      const leftBtn = document.getElementById("leftBtn");
+      const rightBtn = document.getElementById("rightBtn");
+      const bigBtn = document.getElementById("bigBtn");
+      const smallBtn = document.getElementById("smallBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      const img = document.getElementById("img");
+      const imgContainer = document.getElementById("imgContainer");
+
+      const originImg = new Image();
+      originImg.src = img.src;
+
+      let imgWidth = 0;
+      let imgHeight = 0;
+      let containerHeight = 0;
+      let containerWidth = 0;
+
+      const scale = () => {
+        imgContainer.style.width = `${document.body.clientWidth - 200}px`;
+        imgContainer.style.height = `${document.body.clientHeight - 72}px`;
+
+        containerHeight = parseInt(imgContainer.style.height, 10);
+        containerWidth = parseInt(imgContainer.style.width, 10);
+        // 等比缩放
+        let heightRatio = 0;
+        let widthRatio = 0;
+        let ratio = 1;
+        let width = imgWidth;
+        let height = imgHeight;
+        widthRatio = containerWidth / width;
+        heightRatio = containerHeight / height;
+        if (heightRatio < 1) {
+          ratio = heightRatio;
+        } else if (widthRatio < 1) {
+          ratio = widthRatio;
+        } else if (widthRatio < 1 || heightRatio < 1) {
+          ratio = widthRatio <= heightRatio ? widthRatio : heightRatio;
+        }
+        if (ratio < 1) {
+          width *= ratio;
+          height *= ratio;
+        }
+        img.height = height;
+        img.width = width;
+      };
+
+      img.onload = () => {
+        img.style.top = 0;
+        img.style.left = 0;
+        img.style.zoom = '100%';
+        imgWidth = originImg.width;
+        imgHeight = originImg.height;
+        scale();
+      };
+
+      window.onresize = () => {
+        scale();
+      };
+
+      // 旋转角度
+      let rotationAngle = 0;
+
+      leftBtn.onclick = () => {
+        rotationAngle = (rotationAngle - 90) % 360;
+        img.style.transform = 'rotate(' + rotationAngle + 'deg)';
+      }
+
+      rightBtn.onclick = () => {
+        rotationAngle = (rotationAngle + 90) % 360;
+        img.style.transform = 'rotate(' + rotationAngle + 'deg)';
+      }
+
+      bigBtn.onclick = () => {
+        img.style.zoom = `${parseInt(img.style.zoom, 10) + 2}%`;
+      }
+
+      smallBtn.onclick = () => {
+        img.style.zoom = `${parseInt(img.style.zoom, 10) - 2}%`;
+      }
+
+      resetBtn.onclick = () => {
+        img.style.top = 0;
+        img.style.left = 0;
+        img.style.zoom = '100%';
+        img.style.transform = 'rotate(0)';
+        scale();
+      }
+      //图片拖拽
+      let drag = 0;
+      let move = 0;
+      let x = 0;
+      let y = 0;
+      img.onmouseover = () => {
+        drag = 1;
+      }
+      img.onmousemove = () => {
+        if (move) {
+          img.style.left = (window.event.x - x) + "px";
+          img.style.top = (window.event.y - y) + "px";
+        }
+      }
+      img.onmousedown = () => {
+        if (drag) {
+          x = window.event.x - parseInt(img.style.left);
+          y = window.event.y - parseInt(img.style.top);
+          move = 1;
+        }
+      }
+      window.onmouseup = () => {
+        move = 0;
+      }
+      img.ondragstart = () => {
+        window.event.returnValue = false;
+      }
+    </script>
+  </body>
+</html>

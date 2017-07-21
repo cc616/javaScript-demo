@@ -1,1 +1,3 @@
-# previewImg
+# 图片的拖拽、旋转、缩放
+### 使用canvas实现
+### 使用css实现
