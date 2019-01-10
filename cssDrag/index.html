@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <title>使用css3图片旋转拖拽缩放</title>
-      <style>
-        body, html {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-        }
-        #imgContainer {
-          overflow: hidden;
-          border: 1px solid red;
-          margin: auto;
-        }
-        .img {
-          border: 1px solid #cecece;
-          cursor: move;
-          position: relative;
-        }
-        .operator-group {
-          height: 50px;
-          text-align: center;
-          margin-top: 20px;
-        }
-        .button:focus {
-          outline: 0;
-        }
-        .button {
-          padding: 0;
-          width: 50px;
-          line-height: 40px;
-          background: linear-gradient(to top,#444,#343434 50%,#292929 0,#333);
-          border: 1px solid #111;
-          color: #fff;
-          border: 1px solid #111;
-          border-right: none;
-        }
-        .button:hover {
-          cursor: pointer;
-        }
-        .hide {
-          display: none;
-        }
-      </style>
+    <meta charset="UTF-8">
+    <title>使用css3图片旋转拖拽缩放</title>
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #imgContainer {
+        overflow: hidden;
+        border: 1px solid red;
+        margin: auto;
+      }
+      .img {
+        border: 1px solid #cecece;
+        cursor: move;
+        position: relative;
+      }
+      .operator-group {
+        height: 50px;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .button:focus {
+        outline: 0;
+      }
+      .button {
+        padding: 0;
+        width: 50px;
+        line-height: 40px;
+        background: linear-gradient(to top,#444,#343434 50%,#292929 0,#333);
+        border: 1px solid #111;
+        color: #fff;
+        border: 1px solid #111;
+        border-right: none;
+      }
+      .button:hover {
+        cursor: pointer;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div id="imgContainer">
-       <img id="img" src="http://scc-1252933003.cosgz.myqcloud.com/1500453562842780.jpg" class="img" />
+      <img id="img" src="../img/img0.png" class="img" />
     </div>
     <div class="operator-group">
       <button class="button" id="leftBtn">向左转</button>
