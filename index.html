@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>图片旋转缩放拖拽</title>
+    <title>javaScript-demo</title>
     <style>
       body, html {
         height: 100%;
@@ -12,28 +12,101 @@
       body {
         position: relative;
       }
-      div {
-        width: 400px;
-        height: 60px;
-        line-height: 60px;
-        margin: auto;
-        padding-top: 200px;
-      }
       a {
         text-decoration: none;
-        font-size: 24px;
-        margin-right: 16px;
+        color: #333;
       }
       a:visited {
         color: #333;
       }
+      a:hover {
+        color: #1da57a;
+      }
+      ul, li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        padding: 60px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .item {
+        padding: 20px 40px;
+        border: 1px solid #1da57a;
+        border-radius: 10px;
+      }
+      .item-title {
+        color: #1da57a;
+        line-height: 30px;
+        margin-bottom: 16px;
+        font-size: 18px;
+      }
+      .item-nav {
+        line-height: 38px;
+      }
+      .item-nav-active {
+        color: #1da57a;
+      }
+      .item-nav:hover {
+        cursor: pointer;
+        color: #1da57a;
+      }
+      .item-children-menu-hide {
+        height: 0;
+        overflow: hidden;
+        transition: all .3s;
+      }
+      .item-children-menu-show {
+        margin-bottom: 20px;
+        transition: all .3s;
+      }
     </style>
   </head>
   <body>
-    <div>
-      <a href="./canvasDrag/index.html">canvas实现</a>
-      <a href="./cssDrag/index.html">css实现</a>
+    <div class="container">
+      <div class="item">
+        <div class="item-title">样式档</div>
+        <div>
+          <div class="item-nav">图片拖拽</div>
+          <ul class="item-children-menu-hide">
+            <li>
+              <a href="./图片拖拽/canvas实现/index.html">canvas实现</a>
+            </li>
+            <li>
+              <a href="./图片拖拽/css实现/index.html">css实现</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="item-nav">
+            <a href="./自适应瀑布/index.html">自适应瀑布</a>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-title">js挡</div>
+      </div>
+      <div class="item">
+        <div class="item-title">canvas、h5</div>
+      </div>
     </div>
   </body>
+  <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+  <script type="text/javascript">
+    $('.item-nav').on('click', function() {
+      const children = $(this).next()
+      if (children.hasClass("item-children-menu-hide")) {
+        children.removeClass('item-children-menu-hide').addClass('item-children-menu-show')
+        $(this).addClass('item-nav-active')
+        return
+      }
+      if (children.hasClass("item-children-menu-show")) {
+        children.removeClass('item-children-menu-show').addClass('item-children-menu-hide')
+        return
+      }
+    })
+  </script>
 </html>
   

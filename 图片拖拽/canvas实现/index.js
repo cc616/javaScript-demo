@@ -3,7 +3,7 @@
   var config = {
     width: 800,                   // 设置canvas的宽
     height: 600,                  // 设置canvas的高
-    imgSrc: '../img/img0.png',    // 图片路径
+    imgSrc: '../img/1.png',    // 图片路径
     maxScale: 4.0,                // 最大放大倍数
     minScale: 0.2,                // 最小放大倍数
     step: 0.1                     // 每次放大、缩小 倍数的变化值

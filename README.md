@@ -1,3 +1,4 @@
-# 图片的拖拽、旋转、缩放
-### 使用canvas实现
-### 使用css实现
+# 日常javaScript学习积累
+## 样式
+## js
+## canvas
